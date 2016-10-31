@@ -1,0 +1,15 @@
+{
+  "name": "linthouse-scss",
+  "homepage": "https://github.com/wearelighthouse/scss-lint",
+  "authors": [
+    "Russell Bishop <russell@wearelighthouse.com>"
+  ],
+  "description": "Linting SCSS for consistency - and victory!",
+  "main": ".scss-lint.yml",
+  "keywords": [
+    "scss",
+    "sass",
+    "lint"
+  ],
+  "license": "MIT"
+}
