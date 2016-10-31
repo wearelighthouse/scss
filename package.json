@@ -1,5 +1,5 @@
 {
-  "name": "lighthouse-scss-lint",
+  "name": "linthouse-scss",
   "version": "1.0.0-alpha",
   "description": "Linting SCSS for consistency - and victory!",
   "main": ".scss-lint.yml",
