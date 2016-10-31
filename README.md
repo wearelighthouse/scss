@@ -10,6 +10,7 @@ Linting SCSS for consistency - and victory!
 	- [[Sublime​Linter-contrib-scss-lint](https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint)](#sublimelinter-contrib-scss-linthttpspackagecontroliopackagessublimelinter-contrib-scss-lint)
 - [Styles](#styles)
 	- [Formatting](#formatting)
+	- [Hybrid lines](#hybrid-lines)
 	- [Comments](#comments)
 	- [BEM](#bem)
 	- [ID selectors](#id-selectors)
@@ -88,6 +89,10 @@ apm install linter-sass-lint
   // ...
 }
 ```
+
+### Hybrid lines
+
+<!-- TODO: Explain rules and reasoning for hybrid line styles -->
 
 ### Comments
 
