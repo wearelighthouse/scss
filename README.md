@@ -2,6 +2,15 @@
 
 Linting SCSS for consistency - and victory!
 
+<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+
+- [Installation](#installation)
+	- [[Node Sass Lint](https://www.npmjs.com/package/sass-lint)](#node-sass-linthttpswwwnpmjscompackagesass-lint)
+	- [[Atom linter-sass-lint](https://atom.io/packages/linter-sass-lint)](#atom-linter-sass-linthttpsatomiopackageslinter-sass-lint)
+	- [[Sublime​Linter-contrib-scss-lint](https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint)](#sublimelinter-contrib-scss-linthttpspackagecontroliopackagessublimelinter-contrib-scss-lint)
+
+<!-- /TOC -->
+
 ## Installation
 
 ### [Node Sass Lint](https://www.npmjs.com/package/sass-lint)
