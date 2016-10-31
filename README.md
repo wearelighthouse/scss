@@ -153,7 +153,7 @@ Mixins should be used to DRY up your code, add clarity, or abstract complexity--
 
 ### Nested selectors
 
-<!-- TODO: Specify max slector depth (if any) and BEM< depth, eg: -->
+<!-- TODO: Specify max slector depth (if any) and BEM depth, eg: -->
 **Do not nest selectors more than three levels deep!**
 
 ```scss
