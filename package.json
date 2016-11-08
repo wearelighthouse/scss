@@ -4,7 +4,7 @@
   "description": "Linting SCSS for consistency - and victory!",
   "main": ".scss-lint.yml",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "ln -s .scss-lint ../../.scss-lint"
   },
   "repository": {
     "type": "git",
