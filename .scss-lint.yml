@@ -58,7 +58,7 @@ linters:
     ignore_single_line_blocks: true
 
   EmptyRule:
-    enabled: false # 
+    enabled: false #
 
   ExtendDirective:
     enabled: false
@@ -160,6 +160,7 @@ linters:
       - align-self
       - justify-content
       - order
+      - appearance
       - float
       - clear
       # (4) size
@@ -227,6 +228,8 @@ linters:
       - outline-style
       - outline-width
       - box-shadow
+      - fill
+      - filter
       # (7) typography & text
       - font
       - font-family
@@ -278,10 +281,10 @@ linters:
       - empty-cells
       - speak
       - cursor
-
+      - pointer-events
 
   PropertySpelling:
-    enabled: true
+    enabled: true # Unknown properties !!!!
     extra_properties: []
     disabled_properties: []
 
