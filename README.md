@@ -1,4 +1,4 @@
-# Lighthouse SCSS Lint
+# A Lighthouse Style Guide: SCSS
 
 Linting SCSS for consistency - and victory!
 
