@@ -2,19 +2,14 @@
 
 Linting SCSS for consistency - and victory!
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
-- [Installation](#installation)
-	- [[Node Sass Lint](https://www.npmjs.com/package/sass-lint)](#node-sass-linthttpswwwnpmjscompackagesass-lint)
-	- [[Atom linter-sass-lint](https://atom.io/packages/linter-sass-lint)](#atom-linter-sass-linthttpsatomiopackageslinter-sass-lint)
-	- [[Sublime​Linter-contrib-scss-lint](https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint)](#sublimelinter-contrib-scss-linthttpspackagecontroliopackagessublimelinter-contrib-scss-lint)
-- [Styles](#styles)
+1. [Installation](#1-installation)
+2. [Styles](#styles)
 	- [Formatting](#formatting)
 	- [Comments](#comments)
 	- [BEM](#bem)
 	- [ID selectors](#id-selectors)
 	- [JavaScript selectors](#javascript-selectors)
-- [Sass](#sass)
+3. [Sass](#sass)
 	- [Syntax](#syntax)
 	- [Ordering of property declarations](#ordering-of-property-declarations)
 	- [Variables](#variables)
@@ -23,31 +18,35 @@ Linting SCSS for consistency - and victory!
 	- [Nested selectors](#nested-selectors)
   - [Nested modifiers](#nested-modifiers)
 
-<!-- /TOC -->
+## 1. Installation
 
-## Installation
+### Sass Lint
 
-### [Node Sass Lint](https://www.npmjs.com/package/sass-lint)
+Regardless of what text editor/IDE you use you will need to install the [sass-lint](https://www.npmjs.com/package/sass-lint) package.
 
-Install the npm package globally:
+Use the following command to install it globally:
 
-```bash
-npm install -g sass-lint
-```
+`npm install -g sass-lint`
 
-### [Atom linter-sass-lint](https://atom.io/packages/linter-sass-lint)
+You will also need to place [.sass-lint.yml](.scss-lint.yml) in the root of your project.
 
-You'll need to have [Linter](https://atom.io/packages/linter) installed to use this plugin.
+Once thats done you can then lint files with the following command:
 
-```
-apm install linter-sass-lint
-```
+`sass-lint -c .scss-lint.yml '**/*.scss' -v -q`
 
-### [Sublime​Linter-contrib-scss-lint](https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint)
+This is cumbersome so you should probably install one of the bellow!
 
-[Instructions](https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint)
+### Atom
 
-## Styles
+You'll need to have [Linter](https://atom.io/packages/linter) installed to use [linter-sass-lint](https://atom.io/packages/linter-sass-lint).
+
+`apm install linter-sass-lint`
+
+### Sublime
+
+Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint) to get setup with Sublime Text.
+
+## 2. Styles
 
 ### Formatting
 
@@ -142,7 +141,7 @@ var $gallery = $.js('gallery');
 
 See https://toddmotto.com/data-js-selectors-enhancing-html5-development-by-separating-css-from-javascript/.
 
-## Sass
+## 3. Sass
 
 ### Syntax
 
