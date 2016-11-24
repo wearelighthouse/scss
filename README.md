@@ -10,7 +10,6 @@ Linting SCSS for consistency - and victory!
 	- [[Sublime​Linter-contrib-scss-lint](https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint)](#sublimelinter-contrib-scss-linthttpspackagecontroliopackagessublimelinter-contrib-scss-lint)
 - [Styles](#styles)
 	- [Formatting](#formatting)
-	- [Hybrid lines](#hybrid-lines)
 	- [Comments](#comments)
 	- [BEM](#bem)
 	- [ID selectors](#id-selectors)
@@ -22,6 +21,7 @@ Linting SCSS for consistency - and victory!
 	- [Mixins](#mixins)
 	- [Extend directive](#extend-directive)
 	- [Nested selectors](#nested-selectors)
+  - [Nested modifiers](#nested-modifiers)
 
 <!-- /TOC -->
 
@@ -150,17 +150,21 @@ See https://toddmotto.com/data-js-selectors-enhancing-html5-development-by-separ
 
 ### Ordering of property declarations
 
-1. Property declarations
-
-Follow the order spcified by the `.scss-lint.yml`
-
-2. `@include` declarations
-
-<!-- TODO: Specify mixin <-> property order -->
-
+1. `@include` declarations - Ordered by [property groups](.scss-lint.yml#L133).
+2. Property declarations
 3. Nested selectors
 
-<!-- TODO: Specify nested selector property order -->
+```
+.tab {
+  @include border();
+
+  border-bottom: 0px;
+
+  a {
+    ...
+  }
+}
+```
 
 ### Variables
 
@@ -199,3 +203,60 @@ When selectors become this long, you're likely writing CSS that is:
 **Russell Bishop**
 
 > It probably won't be your favourite bit of code either, but if you're writing it, you're probably unable to get around.
+
+### Nested modifiers
+
+When nesting modifiers like `@media` and `:hover` it is imporant that any nested selectors appear in the appropriate order.
+
+**Modifier doesn't affect children**
+
+```
+.parent {
+  &:hover {
+    // .parent specific modifiers
+  }
+
+  &__child {
+    ...
+  }
+}
+```
+
+**Modifier affects children**
+
+```
+.parent {
+  &__child {
+    ...  
+  }
+
+  &:hover {
+    &__child {
+      ...
+    }
+  }
+}
+```
+
+### Ordering of modifiers
+
+1. Element states
+2. [Modifiers](https://en.bem.info/methodology/naming-convention/#modifier-name)
+3. Media queries
+
+```
+.link {
+  
+  &:hover {
+    ...
+  }
+
+  &--active {
+    ...
+  }
+
+  @media only sceen {
+    ...
+  }
+}
+```
