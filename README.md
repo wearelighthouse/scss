@@ -178,14 +178,13 @@ Mixins should be used to DRY up your code, add clarity, or abstract complexity--
 
 ### Nested selectors
 
-<!-- TODO: Specify max slector depth (if any) and BEM depth, eg: -->
-**Do not nest selectors more than three levels deep!**
+**Avoid nesting selectors more than three levels deep!**
 
 ```scss
 .page-container {
   .content {
     .profile {
-      // STOP!
+      // Avoid going deeper!
     }
   }
 }
@@ -196,3 +195,9 @@ When selectors become this long, you're likely writing CSS that is:
 * Strongly coupled to the HTML (fragile) *—OR—*
 * Overly specific (powerful) *—OR—*
 * Not reusable
+
+**However there will be times where this is necessary!**
+
+**Russell Bishop**
+
+> It probably won't be your favourite bit of code either, but if you're writing it, you're probably unable to get around.
