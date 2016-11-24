@@ -92,7 +92,7 @@ apm install linter-sass-lint
 
 ### Comments
 
-Make use of both line comments and block comments for given situations.
+* Make use of both line comments and block comments for given situations.
 
 
 **Usage**
@@ -123,7 +123,26 @@ For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2
 
 Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
 
-<!-- TODO: Standards for DOM js bindings -->
+* Use class names for styling only _not_ for js binding.
+
+**Helper**
+
+```
+$.js = function(el) {
+  return $('[data-js=' + el + ']');
+};
+```
+
+**Usage**
+```
+<div data-js="gallery">
+ ...
+</div>
+
+var $gallery = $.js('gallery');
+```
+
+See https://toddmotto.com/data-js-selectors-enhancing-html5-development-by-separating-css-from-javascript/.
 
 ## Sass
 
