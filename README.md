@@ -106,8 +106,6 @@ apm install linter-sass-lint
 
 ### BEM
 
-<!-- TODO: Rules and links for BEM -->
-
 **BEM**, or “Block-Element-Modifier”, is a _naming convention_ for classes in HTML and CSS. It was originally developed by Yandex with large codebases and scalability in mind, and can serve as a solid set of guidelines for implementing OOCSS.
 
   * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
