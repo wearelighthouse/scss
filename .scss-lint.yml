@@ -145,6 +145,16 @@ linters:
       - overflow-x
       - overflow-y
       - clip
+      - clip-path
+      - mask
+      - mask-image
+      - mask-mode
+      - mask-position
+      - mask-size
+      - mask-repeat
+      - mask-origin
+      - mask-clip
+      - mask-composite
       # (3) display, flex & float
       - display
       - vertical-align
@@ -196,7 +206,10 @@ linters:
       - background-image
       - background-repeat
       - background-position
+      - background-position-x
+      - background-position-y
       - background-size
+      - background-blend-mode
       - border
       - border-top
       - border-right
@@ -229,6 +242,11 @@ linters:
       - outline-width
       - box-shadow
       - fill
+      - stroke
+      - stroke-width
+      - stroke-dasharray
+      - stroke-dashoffset
+      - stroke-linecap
       - filter
       # (7) typography & text
       - font
@@ -242,6 +260,8 @@ linters:
       - letter-spacing
       - line-height
       - list-style
+      - list-style-type
+      - list-style-position
       - text-align
       - text-decoration
       - text-indent
@@ -273,6 +293,7 @@ linters:
       - animation-timing-function
       - animation-fill-mode
       - animation-iteration-count
+      - will-change
       # (9) other
       - border-collapse
       - border-spacing
