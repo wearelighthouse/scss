@@ -90,13 +90,19 @@ apm install linter-sass-lint
 }
 ```
 
-### Hybrid lines
-
-<!-- TODO: Explain rules and reasoning for hybrid line styles -->
-
 ### Comments
 
-<!-- TODO: rules for comments  -->
+Make use of both line comments and block comments for given situations.
+
+
+**Usage**
+```
+// For inline explanations
+
+/**
+ * For documentation
+ */
+```
 
 ### BEM
 
