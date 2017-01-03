@@ -95,18 +95,31 @@ rules:
     - 1
     - ignore-custom-properties: false
       order:
+        # (1) position
         - position
         - top
         - right
         - bottom
         - left
         - z-index
+        # (2) visibility & clipping
         - opacity
         - visibility
         - overflow
         - overflow-x
         - overflow-y
         - clip
+        - clip-path
+        - mask
+        - mask-image
+        - mask-mode
+        - mask-position
+        - mask-size
+        - mask-repeat
+        - mask-origin
+        - mask-clip
+        - mask-composite
+        # (3) display, flex & float
         - display
         - vertical-align
         - flex
@@ -124,6 +137,7 @@ rules:
         - appearance
         - float
         - clear
+        # (4) size
         - width
         - min-width
         - max-width
@@ -140,6 +154,7 @@ rules:
         - padding-right
         - padding-bottom
         - padding-left
+        # (5) columns
         - columns
         - column-gap
         - column-fill
@@ -147,6 +162,7 @@ rules:
         - column-span
         - column-count
         - column-width
+        # (6) background, border, outline & box-shadow
         - background
         - background-attachment
         - background-clip
@@ -154,7 +170,10 @@ rules:
         - background-image
         - background-repeat
         - background-position
+        - background-position-x
+        - background-position-y
         - background-size
+        - background-blend-mode
         - border
         - border-top
         - border-right
@@ -187,7 +206,13 @@ rules:
         - outline-width
         - box-shadow
         - fill
+        - stroke
+        - stroke-width
+        - stroke-dasharray
+        - stroke-dashoffset
+        - stroke-linecap
         - filter
+        # (7) typography & text
         - font
         - font-family
         - font-size
@@ -199,6 +224,8 @@ rules:
         - letter-spacing
         - line-height
         - list-style
+        - list-style-type
+        - list-style-position
         - text-align
         - text-decoration
         - text-indent
@@ -211,6 +238,7 @@ rules:
         - word-spacing
         - content
         - quotes
+        # (8) transform, transitions & animation
         - transform
         - transform-box
         - transform-origin
@@ -229,6 +257,8 @@ rules:
         - animation-timing-function
         - animation-fill-mode
         - animation-iteration-count
+        - will-change
+        # (9) other
         - border-collapse
         - border-spacing
         - caption-side
