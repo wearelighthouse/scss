@@ -1,0 +1,31 @@
+@import '_variables/colours';
+@import '_variables/breakpoints';
+
+@import '_mixins/spacing';
+@import '_mixins/typography';
+
+@import 'common/reset';
+@import 'common/typography';
+@import 'common/font-face';
+
+
+body {
+  @include font-scale(map-get($font-sizes, smallest), #{map-get($font-sizes, largest)});
+  @include spacing(.5rem);
+  padding-top: 1rem;
+  font-family: font-stack('cera');
+  font-size: #{map-get($font-sizes, smallest)}px;
+  color: map-get($text, body);
+  line-height: 1.65;
+
+  h3 {
+    @include font-scale(18, 21);
+    font-weight: bold;
+  }
+
+  h3,
+  p {
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+}

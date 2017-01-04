@@ -17,8 +17,11 @@ Linting SCSS for consistency - and victory!
 	- [Extend directive](#extend-directive)
 	- [Nested selectors](#nested-selectors)
   - [Nested modifiers](#nested-modifiers)
+4. [Starter](#starter)
 
 ## 1. Installation
+
+For both `sass-lint` and `scss-lint` you should place the linter config in the root of your project. You can find the appropriate config in [`resources`](resources).
 
 ### Sass Lint
 
@@ -28,11 +31,9 @@ Use the following command to install it globally:
 
 `npm install -g sass-lint`
 
-You will also need to place [.sass-lint.yml](.scss-lint.yml) in the root of your project.
-
 Once thats done you can then lint files with the following command:
 
-`sass-lint -c .scss-lint.yml '**/*.scss' -v -q`
+`sass-lint -c .sass-lint.yml '**/*.scss' -v -q`
 
 This is cumbersome so you should probably install one of the bellow!
 
@@ -44,7 +45,7 @@ You'll need to have [Linter](https://atom.io/packages/linter) installed to use [
 
 ### Sublime
 
-Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint) to get setup with Sublime Text.
+Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-contrib-sass-lint) to get setup with Sublime Text.
 
 ## 2. Styles
 
@@ -259,3 +260,19 @@ When nesting modifiers like `@media` and `:hover` it is imporant that any nested
   }
 }
 ```
+
+## 3. Starter
+
+When starting a project you should start with the files found at [`resources/scss`](resources/scss).
+
+### Blocks
+    Code referring to componeants or blocks should be here
+
+### Elements
+    Code refering to elements, for example buttons.
+
+### Library
+    Contains all the code that can be globablly set
+
+### Views
+    Code referring to specific views or pages

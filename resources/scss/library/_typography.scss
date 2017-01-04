@@ -1,0 +1,75 @@
+@function font-stack($family) {
+
+  $return: null;
+
+  @if ($family == 'cera') {
+    $return: Cera, "Cera GR", "CeraGR", "Open Sans", Helvetica, sans-serif;
+
+  } @else if ($family == 'bariol') {
+    $return: Bariol, "Helvetica Rounded", "Arial Rounded", Helvetica, sans-serif;
+  }
+
+  @return $return;
+}
+
+@mixin font-scale($smallest, $largest) {
+
+  @media (max-width: #{map-get($context, largest)}px) {
+    font-size: calc(#{$smallest}px + (#{$largest} - #{$smallest}) * ( (100vw - #{map-get($context, smallest)}px) / ( #{map-get($context, largest)} - #{map-get($context, smallest)}) ));
+  }
+
+  @media (min-width: #{map-get($context, largest)}px) {
+    font-size: #{$largest}px;
+  }
+
+}
+
+@mixin no-text {
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+
+
+
+
+/**
+ * Font Name
+ */
+@font-face {
+
+}
+
+
+:root {
+
+}
+
+.h1 {
+  
+}
+
+.h2 {
+
+}
+
+.h3 {
+
+}
+
+.h4 {
+
+}
+
+a {
+
+  &:hover,
+  &:focus {
+
+  }
+}

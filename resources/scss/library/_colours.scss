@@ -1,0 +1,8 @@
+// Variables
+$colours: (
+  unfulsome: #576756,
+);
+
+$lightingDark: map-get($colours, unfulsome);
+
+$bodyText: map-get($colours, unfulsome);
