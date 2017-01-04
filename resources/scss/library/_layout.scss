@@ -1,0 +1,84 @@
+/**
+ * Position Mixins
+ */
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin absolute-centre($axis: false) {
+  position: absolute;
+
+  @if ($axis == false) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+  } @else if ($axis == 'x') {
+    left: 50%;
+    transform: translateX(-50%);
+
+  } @else if ($axis == 'y') {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+/**
+ * Display Mixins
+ */
+@mixin clearfix {
+  &:after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+}
+
+@mixin float-children($direction) {
+  @include clearfix;
+
+  > * {
+    float: $direction;
+  }
+}
+
+@mixin inline-middle($up: false) {
+  display: inline-block; vertical-align: middle;
+
+  @if $up {
+    position: relative; top: -2px;
+  }
+}
+
+@mixin inline-middle-children($up: false) {
+  > * {
+    @include inline-middle($up);
+  }
+}
+
+/**
+ * Sizing Mixins
+ */
+@mixin aspect-ratio($paddingValue) {
+  position: relative;
+
+  &:before {
+    display: block;
+    width: 100%;
+    padding-top: $paddingValue;
+    content: '';
+  }
+
+  > * {
+    position: absolute;
+  }
+}
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}

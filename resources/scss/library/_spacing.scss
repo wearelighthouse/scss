@@ -1,0 +1,112 @@
+/**
+ * Margins & Padding
+ * Uniform margins and padding
+ */
+@mixin pad--top {
+  padding-top: 1rem;
+}
+
+@mixin pad--bottom {
+  padding-bottom: 1rem;
+}
+
+@mixin pad--verticals {
+  @include pad--top;
+  @include pad--bottom;
+}
+
+@mixin pad--left {
+  padding-left: 1rem;
+}
+
+@mixin pad--right {
+  padding-right: 1rem;
+}
+
+@mixin pad--sides {
+  @include pad--left;
+  @include pad--right;
+}
+
+@mixin pad--both {
+  @include pad--sides;
+  @include pad--verticals;
+}
+
+@mixin push--top {
+  margin-top: 1rem;
+}
+
+@mixin push--bottom {
+  margin-bottom: 1rem;
+}
+
+@mixin push--verticals {
+  @include push--top;
+  @include push--bottom;
+}
+
+
+/**
+ * Spacing
+ * Uniform space between sibling elements
+ */
+@mixin spacing($spacing: false) {
+  > * + * {
+
+    @if ($spacing == false) {
+      margin-top: 1rem;
+
+    } @else {
+      margin-top: $spacing;
+    }
+  }
+}
+
+/**
+ * Spacing
+ * Uniform margins and padding
+ */
+.pad--top {
+  @include pad--top;
+}
+
+.pad--bottom {
+  @include pad--bottom;
+}
+
+.pad--verticals {
+  @include pad--verticals;
+}
+
+.pad--left {
+  @include pad--left;
+}
+
+.pad--right {
+  @include pad--right;
+}
+
+.pad--sides {
+  @include pad--sides;
+}
+
+.pad--both {
+  @include pad--both;
+}
+
+.push--top {
+  @include push--top;
+}
+
+.push--bottom {
+  @include push--bottom;
+}
+
+.push--verticals {
+  @include push--verticals;
+}
+
+.spacing {
+  @include spacing(1rem);
+}
