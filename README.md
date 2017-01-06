@@ -110,6 +110,8 @@ Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-con
 
   * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
   * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
+  
+We use BEM to build up `blocks` - like a header, a sidebar, a 'content' block. Anything that isn't covered by the more general sets of attribute selectors found in places like `_forms.scss`, or the single-use classes we have in place for typography or icons etc.
 
 ### ID selectors
 
