@@ -1,129 +1,13 @@
-[type="text"],
-[type="tel"],
-[type="number"],
-[type="email"],
-[type="password"],
+input,
 textarea,
 select {
-  display: block;
-  width: 100%;
-  padding: .8rem 1rem;
-  background: rgba(255, 255, 255, .8);
-  border: none;
-  box-shadow: 0 2px 0 0 rgba(map-get($lighting, dark), .2), 0 0 0 1px map-get($admin-backgrounds, window);
 
   &:focus {
-    background: map-get($colours, white);
+
   }
 }
 
-[type="text"],
-[type="tel"],
-[type="number"],
-[type="email"],
-[type="password"],
-select {
-  height: 2.6rem;
-}
-
-[type="text"],
-textarea {
-  &:valid {
-    // box-shadow: 0 2px 0 0 rgba(map-get($lighting, dark), .6);
-  }
-}
-
-label,
-select {
-  cursor: pointer;
-}
-
-input,
-textarea {
-
-}
-
-input {
-
-}
-
-[type="checkbox"],
-[type="radio"] {
-
-}
-
+[type="radio"],
 [type="checkbox"] {
 
-}
-
-[type="radio"] {
-
-}
-
-textarea {
-  max-width: 100%;
-  font-size: .9rem;
-  line-height: 1.5;
-}
-
-select {
-  appearance: none;
-  border-radius: 0;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-}
-
-fieldset {
-
-}
-
-.input {
-  @include spacing(.5rem);
-
-  &__helper {
-    font-size: #{map-get($font-sizes, smallest)}px;
-    line-height: 1.65;
-  }
-}
-
-.select-wrapper {
-  position: relative;
-
-  &:after {
-    @include square(2.6rem);
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background: url('../svg/sprite/arrow-down.svg') center center no-repeat rgba(map-get($colours, white), 1);
-    background-size: .7rem;
-    content: '';
-    pointer-events: none;
-  }
-}
-
-.file {
-  [type="file"] {
-    @include hide;
-  }
-}
-
-.delete-confirmation {
-  padding: .5rem;
-  border: 1px solid map-get($alert, error-border);
-  border-radius: 4px;
-  font-size: .9rem;
-  font-weight: bold;
-  color: darken(map-get($alert, error-border), 30%);
-}
-
-.error-message {
-  display: inline-block;
-  padding: .6rem 1rem .4rem;
-  background-color: map-get($alert, error-background);
-  border-bottom: 3px solid map-get($alert, error-border);
-  font-weight: bold;
-  color: map-get($alert, error-color);
 }

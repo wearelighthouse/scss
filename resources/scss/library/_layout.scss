@@ -1,6 +1,5 @@
-/**
- * Position Mixins
- */
+// Position
+
 @mixin absolute-fill {
   position: absolute;
   top: 0;
@@ -27,9 +26,8 @@
   }
 }
 
-/**
- * Display Mixins
- */
+// Display
+
 @mixin clearfix {
   &:after {
     display: block;
@@ -60,9 +58,8 @@
   }
 }
 
-/**
- * Sizing Mixins
- */
+// Sizing
+
 @mixin aspect-ratio($paddingValue) {
   position: relative;
 
