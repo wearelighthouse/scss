@@ -1,20 +1,15 @@
-@import 'blocks/empty';
+@import 'library/_reset.scss';
 
-@import 'elements/_button.scss';
-
-@import 'library/_animation.scss';
 @import 'library/_backgrounds.scss';
 @import 'library/_breakpoints.scss';
 @import 'library/_colours.scss';
 @import 'library/_forms.scss';
 @import 'library/_grids.scss';
 @import 'library/_layout.scss';
-@import 'library/_reset.scss';
-
 @import 'library/_spacing.scss';
-@import 'library/_transitions.scss';
+
 @import 'library/_typography.scss';
 @import 'library/_utilities.scss';
 @import 'library/_visibility.scss';
-
-@import 'views/empty';
+@import 'library/_animation.scss';
+@import 'library/_transitions.scss';
