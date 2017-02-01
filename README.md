@@ -23,29 +23,39 @@ Linting SCSS for consistency - and victory!
 
 For both `sass-lint` and `scss-lint` you should place the linter config in the root of your project. You can find the appropriate config in [`resources`](resources).
 
-### Sass Lint
+**N.B.** you only need to install one of the below!
 
-Regardless of what text editor/IDE you use you will need to install the [sass-lint](https://www.npmjs.com/package/sass-lint) package.
+### [`sass-lint`](https://www.npmjs.com/package/sass-lint)
 
-Use the following command to install it globally:
+Use the following command to add `sass-lint` as a project `devDependency`:
 
-`npm install -g sass-lint`
+`npm install --save-dev sass-lint`
 
-Once thats done you can then lint files with the following command:
+Once that is done you can then lint files with the following command:
 
-`sass-lint -c .sass-lint.yml '**/*.scss' -v -q`
+`./node_modules/.bin/sass-lint -c .sass-lint.yml '**/*.scss' -v -q`
 
-This is cumbersome so you should probably install one of the bellow!
+This is cumbersome so you should probably install a linter package for your favourite text editor.
 
-### Atom
-
-You'll need to have [Linter](https://atom.io/packages/linter) installed to use [linter-sass-lint](https://atom.io/packages/linter-sass-lint).
-
-`apm install linter-sass-lint`
-
-### Sublime
+#### Sublime Text
 
 Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-contrib-sass-lint) to get setup with Sublime Text.
+
+### [`scss-lint`](https://github.com/brigade/scss-lint)
+
+Use the following commad to install `scss-lint`:
+
+`gem install scss_lint`
+
+Once that is done you canthen lint files with the following commad:
+
+`scss-lint path/to/your/scss/**/*.scss`
+
+Again...this is cumbersome so you should probably install a linter package for your favourite text editor.
+
+#### Sublime Text
+
+Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-contrib-scss-lint) to get stup with Sublime Text.
 
 ## 2. Styles
 
