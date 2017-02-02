@@ -1,51 +1,108 @@
-/**
- * Margins & Padding
- * Uniform margins and padding
- */
-@mixin pad--top {
-  padding-top: 1rem;
+$values: (
+  'padding': 1rem,
+  'margin': 1rem
+);
+
+$sides: top, right, bottom, left;
+
+@mixin layout($property, $a: false, $b: false, $c: false, $d: false) {
+  $value: map-get($values, $property);
+
+  @if ($a) {
+    @if $a == 'verticals' or $a == 'sides' {
+
+      @if ($a == 'verticals') {
+        #{$property}-top: $value;
+        #{$property}-bottom: $value;
+      }
+      @else if ($a == 'sides') {
+        #{$property}-right: $value;
+        #{$property}-left: $value;
+      }
+      @else if ($a == 'top') {
+        #{$property}-top: $value;
+      }
+      @else if ($a == 'right') {
+        #{$property}-right: $value;
+      }
+      @else if ($a == 'bottom') {
+        #{$property}-bottom: $value;
+      }
+      @else if ($a == 'left') {
+        #{$property}-left: $value;
+      }
+    }
+
+    @else {
+      @if $d {
+        @if $a > 0 { #{$property}-top: $a * $value; }
+        @if $b > 0 { #{$property}-right: $b * $value; }
+        @if $c > 0 { #{$property}-bottom: $c * $value; }
+        @if $d > 0 { #{$property}-left: $d * $value; }
+      }
+      @else if $c {
+        @if $a > 0 { #{$property}-top: $a * $value; }
+        @if $b > 0 { #{$property}-right: $b * $value; #{$property}-left: $b * $value; }
+        @if $c > 0 { #{$property}-bottom: $c * $value; }
+      }
+      @else if $b {
+        @if $a > 0 { #{$property}-top: $a * $value; #{$property}-bottom: $a * $value; }
+        @if $b > 0 { #{$property}-left: $b * $value; #{$property}-right: $b * $value; }
+      }
+      @else if $a {
+        @if $a > 0 { #{$property}-top: $a * $value; #{$property}-right: $a * $value; #{$property}-bottom: $a * $value; #{$property}-left: $a * $value; }
+      }
+    }
+  }
+
+  @else {
+    #{$property}: $value;
+  }
 }
 
-@mixin pad--bottom {
-  padding-bottom: 1rem;
+@mixin pad($properties...) {
+  @include layout('padding', $properties...);
 }
 
-@mixin pad--verticals {
-  @include pad--top;
-  @include pad--bottom;
+@mixin push($properties...) {
+  @include layout('margin', $properties...);
 }
 
-@mixin pad--left {
-  padding-left: 1rem;
+.pad {
+  @include pad();
 }
 
-@mixin pad--right {
-  padding-right: 1rem;
+.pad--verticals {
+  @include pad(verticals);
 }
 
-@mixin pad--sides {
-  @include pad--left;
-  @include pad--right;
+.pad--sides {
+  @include pad(sides);
 }
 
-@mixin pad--both {
-  @include pad--sides;
-  @include pad--verticals;
+@each $side in $sides {
+  .pad--#{$side} {
+    padding-#{$side}: map-get($values, 'padding');
+  }
 }
 
-@mixin push--top {
-  margin-top: 1rem;
+.push {
+  @include push();
 }
 
-@mixin push--bottom {
-  margin-bottom: 1rem;
+.push--verticals {
+  @include push(verticals);
 }
 
-@mixin push--verticals {
-  @include push--top;
-  @include push--bottom;
+.push--sides {
+  @include push(sides);
 }
 
+@each $side in $sides {
+  .push--#{$side} {
+    margin-#{$side}: map-get($values, 'padding');
+  }
+}
 
 /**
  * Spacing
@@ -67,46 +124,11 @@
  * Spacing
  * Uniform margins and padding
  */
-.pad--top {
-  @include pad--top;
-}
-
-.pad--bottom {
-  @include pad--bottom;
-}
-
-.pad--verticals {
-  @include pad--verticals;
-}
-
-.pad--left {
-  @include pad--left;
-}
-
-.pad--right {
-  @include pad--right;
-}
-
-.pad--sides {
-  @include pad--sides;
-}
-
-.pad--both {
-  @include pad--both;
-}
-
-.push--top {
-  @include push--top;
-}
-
-.push--bottom {
-  @include push--bottom;
-}
-
-.push--verticals {
-  @include push--verticals;
-}
-
 .spacing {
   @include spacing(1rem);
+}
+
+.pad--home {
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
