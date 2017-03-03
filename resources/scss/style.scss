@@ -1,15 +1,22 @@
-@import 'library/_reset.scss';
 
-@import 'library/_backgrounds.scss';
-@import 'library/_breakpoints.scss';
-@import 'library/_colours.scss';
-@import 'library/_forms.scss';
-@import 'library/_grids.scss';
-@import 'library/_layout.scss';
-@import 'library/_spacing.scss';
+// Library
 
-@import 'library/_typography.scss';
-@import 'library/_utilities.scss';
-@import 'library/_visibility.scss';
-@import 'library/_animation.scss';
-@import 'library/_transitions.scss';
+@import 'library/reset';
+
+@import 'library/backgrounds';
+@import 'library/breakpoints';
+@import 'library/colours';
+@import 'library/forms';
+@import 'library/grids';
+@import 'library/layout';
+@import 'library/spacing';
+
+@import 'library/typography';
+@import 'library/utilities';
+@import 'library/visibility';
+@import 'library/animation';
+@import 'library/transitions';
+
+
+// Blocks
+@import 'blocks/button';
