@@ -1,5 +1,3 @@
-----
-
 ** What is CONFIG for? **
 
 Strictly for global variables. Not _every_ variable available, just the long lists that get used all over the project.

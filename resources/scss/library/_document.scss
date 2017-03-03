@@ -1,3 +1,11 @@
+/*
+
+  Really high-level styles for the html, body and :root here.
+  
+*/
+
+
 body {
   overflow-x: hidden;
+  min-width: $b-min;
 }

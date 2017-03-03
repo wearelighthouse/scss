@@ -1,12 +1,23 @@
+/*
+
+  Global typographic styles and helpers.
+
+  You can also build @font-face declarations here.
+
+  We use font-scale to create 
+  
+*/
+
+
 @function font-stack($family) {
 
   $return: null;
 
-  @if ($family == 'cera') {
-    $return: Cera, "Cera GR", "CeraGR", "Open Sans", Helvetica, sans-serif;
+  @if ($family == 'A') {
+    $return: A, sans-serif;
 
-  } @else if ($family == 'bariol') {
-    $return: Bariol, "Helvetica Rounded", "Arial Rounded", Helvetica, sans-serif;
+  } @else if ($family == 'B') {
+    $return: B, sans-serif;
   }
 
   @return $return;
@@ -14,11 +25,11 @@
 
 @mixin font-scale($smallest, $largest) {
 
-  @media (max-width: #{map-get($context, largest)}px) {
-    font-size: calc(#{$smallest}px + (#{$largest} - #{$smallest}) * ( (100vw - #{map-get($context, smallest)}px) / ( #{map-get($context, largest)} - #{map-get($context, smallest)}) ));
+  @media (max-width: 1200px) {
+    font-size: calc(#{$smallest}px + (#{$largest} - #{$smallest}) * ( (100vw - #{$b-min}px) / ( #{$b-max} - #{$b-min}) ));
   }
 
-  @media (min-width: #{map-get($context, largest)}px) {
+  @media (min-width: 1200px) {
     font-size: #{$largest}px;
   }
 
@@ -32,22 +43,16 @@
 
 @mixin ellipsis {
   overflow: hidden;
-  text-overflow: ellipsis; white-space: nowrap;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-
-
-
-/**
- * Font Name
- */
 @font-face {
 
 }
 
-
 :root {
-
+  @include font-scale(16, 21);
 }
 
 .h1 {

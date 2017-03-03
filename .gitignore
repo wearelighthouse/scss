@@ -1,1 +1,5 @@
 .DS_Store
+test.html
+/resources/scss/style.css
+/resources/scss/style.css.map
+/resources/scss/.sass-cache/*

@@ -61,15 +61,15 @@ Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-con
 
 ### Formatting
 
-* Use soft tabs (2 spaces) for indentation
-* Prefer dashes over camelCasing in class names.
+* Use soft tabs (2 spaces) for indentation.
+* Use dashes in class names.
   - Underscores and PascalCasing are okay if you are using BEM (see [BEM](#bem) below).
-* Do not use ID selectors
+* Do not use ID selectors.
 * When using multiple selectors in a rule declaration, give each selector its own line.
-* Put a space before the opening brace `{` in rule declarations
+* Put a space before the opening brace `{` in rule declarations.
 * In properties, put a space after, but not before, the `:` character.
-* Put closing braces `}` of rule declarations on a new line
-* Put blank lines between rule declarations
+* Put closing braces `}` of rule declarations on a new line.
+* Put blank lines between rule declarations.
 
 **Bad**
 
@@ -80,7 +80,7 @@ Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-con
 .no, .nope, .not_good {
     // ...
 }
-#lol-no {
+#lol-dont-even {
   // ...
 }
 ```
@@ -89,8 +89,8 @@ Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-con
 
 ```css
 .avatar {
+  margin: 10px;
   border-radius: 50%;
-  border: 2px solid white;
 }
 
 .one,
@@ -104,14 +104,13 @@ Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-con
 
 * Make use of both line comments and block comments for given situations.
 
-
 **Usage**
 ```
 // For inline explanations
 
-/**
- * For documentation
- */
+/*
+  For documentation
+*/
 ```
 
 ### BEM
@@ -121,7 +120,9 @@ Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-con
   * CSS Trick's [BEM 101](https://css-tricks.com/bem-101/)
   * Harry Roberts' [introduction to BEM](http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/)
   
-We use BEM to build up `blocks` - like a header, a sidebar, a 'content' block. Anything that isn't covered by the more general sets of attribute selectors found in places like `_forms.scss`, or the single-use classes we have in place for typography or icons etc.
+We use BEM to build up `blocks` - like a header, a sidebar, a 'content' block. Anything that isn't covered by the global /library/ styles found in places like `_forms.scss`, or the single-use classes we have in place for typography or icons etc.
+
+[How we use BEM in Blocks](/resources/scss/blocks)
 
 ### ID selectors
 
@@ -160,7 +161,7 @@ See https://toddmotto.com/data-js-selectors-enhancing-html5-development-by-separ
 
 * Use the `.scss` syntax, never the original `.sass` syntax
 
-### Ordering of property declarations
+### Ordering of property declarations (property-sort-order)
 
 1. `@include` declarations - Ordered by [property groups](.scss-lint.yml#L133).
 2. Property declarations
@@ -169,7 +170,6 @@ See https://toddmotto.com/data-js-selectors-enhancing-html5-development-by-separ
 ```
 .tab {
   @include border();
-
   border-bottom: 0px;
 
   a {
@@ -188,17 +188,21 @@ Mixins should be used to DRY up your code, add clarity, or abstract complexity--
 
 ### Extend directive
 
-`@extend` should be avoided because it has unintuitive and potentially dangerous behaviour, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts). Gzipping should handle most of the savings you would have gained by using `@extend`, and you can DRY up your stylesheets nicely with mixins.
+`@extend` should be avoided because it has unintuitive and potentially dangerous behaviour, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts).
+
+There are cases where `@extend` fits well - usually for more closely classes and properties, rather than something global like a `clearfix`. If you're feeling clever nonetheless, keep an eye on how your `@extend` compiles, and preferably reference a [`%placeholder`](http://thesassway.com/intermediate/understanding-placeholder-selectors).
 
 ### Nested selectors
 
 **Avoid nesting selectors more than three levels deep!**
 
 ```scss
-.page-container {
-  .content {
-    .profile {
-      // Avoid going deeper!
+.profile {
+
+  &:hover,
+  &:focus {
+    .profile__face {
+
     }
   }
 }
@@ -215,6 +219,28 @@ When selectors become this long, you're likely writing CSS that is:
 **Russell Bishop**
 
 > It probably won't be your favourite bit of code either, but if you're writing it, you're probably unable to get around.
+> Usually this happens when you're writing some hovers styles for a child element, even a grandchild element - for example:
+
+```scss
+.table {
+
+    &:hover,
+    &:focus {
+        .row {
+            opacity: .2;
+            // other
+        }
+
+        .row {
+            &:hover,
+            &:focus {
+                opacity: 1;
+                // other
+            }
+        }
+    }
+}
+```
 
 ### Nested modifiers
 
@@ -278,13 +304,10 @@ When nesting modifiers like `@media` and `:hover` it is imporant that any nested
 When starting a project you should start with the files found at [`resources/scss`](resources/scss).
 
 ### Blocks
-    Code referring to componeants or blocks should be here
 
-### Elements
-    Code refering to elements, for example buttons.
+### Config
 
 ### Library
-    Contains all the code that can be globablly set
 
 ### Views
     Code referring to specific views or pages

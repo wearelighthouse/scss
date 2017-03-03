@@ -1,3 +1,10 @@
+/*
+
+  Position and Display happens here.
+  
+*/
+
+
 // Position
 
 @mixin absolute-fill {
@@ -26,7 +33,7 @@
   }
 }
 
-// Display
+// Float mixins
 
 @mixin clearfix {
   &:after {
@@ -36,29 +43,12 @@
   }
 }
 
-@mixin float-children($direction) {
-  @include clearfix;
-
-  > * {
-    float: $direction;
-  }
-}
-
-@mixin inline-middle($up: false) {
-  display: inline-block; vertical-align: middle;
-
-  @if $up {
-    position: relative; top: -2px;
-  }
-}
-
-@mixin inline-middle-children($up: false) {
-  > * {
-    @include inline-middle($up);
-  }
-}
-
 // Sizing
+
+@mixin square($size) {
+  width: $size;
+  height: $size;
+}
 
 @mixin aspect-ratio($paddingValue) {
   position: relative;
@@ -75,7 +65,22 @@
   }
 }
 
-@mixin square($size) {
-  width: $size;
-  height: $size;
+.ratio {
+  position: relative;
+  display: inline-block;
+
+  &__canvas {
+    visibility: hidden;
+    display: block;
+    width: 100%;
+
+    &--height {
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  &__subject {
+    @include absolute-fill;
+  }
 }
