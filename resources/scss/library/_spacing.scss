@@ -1,3 +1,44 @@
+/*
+
+  PAD() and PUSH()
+
+  This is our big sexy plan to help you standardise spacing.
+
+  We use the keyword 'pad' to mean padding, and 'push' to mean margins. (Margin just doesn't shorten well, and it's not a verb.)
+
+  The values you give to pad() and push() work the same as padding: and margin: shorthand.
+
+  For example:
+
+    pad(x)                  padding-top: x; padding-right: x; padding-bottom: x; padding-left: x;
+    pad(x, y)               padding-top: x; padding-right: y; padding-bottom: x; padding-left: y;
+    pad(x, y, z)            padding-top: x; padding-right: y, padding-bottom: z; padding-left: y;
+
+  When you only want to specify one side, you can ignore the other values with a `0`.
+  A `0` does not set padding-x: 0; It just ignores that side and moves on.
+
+  For example:
+
+  pad(0, foo, bar, 0)       padding-right: foo; padding-bottom: bar;
+
+
+  PAD-X(O)
+
+  You can also use the pad-top/right/bottom/left mixins to target a single side:
+
+    pad-left(X)             padding-left: X;
+
+  
+  At the end of the file, we set up some simple helpers to use in your markup that just produces (1 * value).
+
+  .pad--sides {
+  }
+
+  .push--verticals {
+  }
+  
+*/
+
 $values: (
   'padding': 1rem,
   'margin': 1rem
@@ -64,8 +105,40 @@ $sides: top, right, bottom, left;
   @include layout('padding', $properties...);
 }
 
+@mixin pad-top($properties) {
+  @include layout('padding', $properties, 0, 0, 0);
+}
+
+@mixin pad-right($properties) {
+  @include layout('padding', 0, $properties, 0, 0);
+}
+
+@mixin pad-bottom($properties) {
+  @include layout('padding', 0, 0, $properties, 0);
+}
+
+@mixin pad-left($properties) {
+  @include layout('padding', 0, 0, 0, $properties);
+}
+
 @mixin push($properties...) {
   @include layout('margin', $properties...);
+}
+
+@mixin push-top($properties) {
+  @include layout('margin', $properties, 0, 0, 0);
+}
+
+@mixin push-right($properties) {
+  @include layout('margin', 0, $properties, 0, 0);
+}
+
+@mixin push-bottom($properties) {
+  @include layout('margin', 0, 0, $properties, 0);
+}
+
+@mixin push-left($properties) {
+  @include layout('margin', 0, 0, 0, $properties);
 }
 
 .pad {
@@ -104,10 +177,10 @@ $sides: top, right, bottom, left;
   }
 }
 
-/**
- * Spacing
- * Uniform space between sibling elements
- */
+/*
+  Spacing
+  Uniform space between sibling elements
+*/
 @mixin spacing($spacing: false) {
   > * + * {
 
@@ -120,15 +193,10 @@ $sides: top, right, bottom, left;
   }
 }
 
-/**
- * Spacing
- * Uniform margins and padding
- */
+/*
+  Spacing
+  Uniform margins and padding
+*/
 .spacing {
   @include spacing(1rem);
-}
-
-.pad--home {
-  padding-right: 2rem;
-  padding-left: 2rem;
 }

@@ -22,5 +22,4 @@ You can build partials in this order:
 
 Variables come first (because they're needed first, and don't require anything else)
 
-Mixins are related to the file's features (like a font-scale() mixin for _typography.scss).
-
+Mixins here are related to the file's features (like a font-scale() mixin for _typography.scss).

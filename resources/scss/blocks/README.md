@@ -1,5 +1,3 @@
-----
-
 ** When do we use blocks? **
 
 Blocks are where we build specific components that make up our project.

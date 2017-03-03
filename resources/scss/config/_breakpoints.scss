@@ -1,15 +1,25 @@
-//Nothing other than the breakpoints should be included in this file
-// 
-// 
-// Variables
-$breakpoints: (
-  imaginous: 320,
-);
+/*
 
-$mobileMenu: map-get($breakpoints, imaginous);
+  Nothing other than the breakpoints should be included in this file.
+
+  1. Create a random-word version in the first list - prefixed with $b-...
+  2. Give your breakpoint context. What was it created for? e.g. $b-hide-mobile-menu
+  3. Use it with a break functions:
+
+    @media (break('>=', $b-hide-mobile-menu)) {
+      ...
+    }
+
+*/
+
+$b-imaginous: 320;
 
 
-// Functions
+// Context
+$b-mobile: $b-imaginous;
+
+
+
 @function break($compare, $size) {
 
   $return: null;
@@ -26,5 +36,3 @@ $mobileMenu: map-get($breakpoints, imaginous);
 
   @return $return;
 }
-
-//Mixins
