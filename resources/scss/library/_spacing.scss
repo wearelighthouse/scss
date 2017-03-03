@@ -101,45 +101,19 @@ $sides: top, right, bottom, left;
   }
 }
 
-@mixin pad($properties...) {
-  @include layout('padding', $properties...);
-}
+@mixin pad($properties...) { @include layout('padding', $properties...); }
 
-@mixin pad-top($properties) {
-  @include layout('padding', $properties, 0, 0, 0);
-}
+@mixin pad-top($properties) { @include layout('padding', $properties, 0, 0, 0); }
+@mixin pad-right($properties) { @include layout('padding', 0, $properties, 0, 0); }
+@mixin pad-bottom($properties) { @include layout('padding', 0, 0, $properties, 0); }
+@mixin pad-left($properties) { @include layout('padding', 0, 0, 0, $properties); }
 
-@mixin pad-right($properties) {
-  @include layout('padding', 0, $properties, 0, 0);
-}
+@mixin push($properties...) { @include layout('margin', $properties...); }
 
-@mixin pad-bottom($properties) {
-  @include layout('padding', 0, 0, $properties, 0);
-}
-
-@mixin pad-left($properties) {
-  @include layout('padding', 0, 0, 0, $properties);
-}
-
-@mixin push($properties...) {
-  @include layout('margin', $properties...);
-}
-
-@mixin push-top($properties) {
-  @include layout('margin', $properties, 0, 0, 0);
-}
-
-@mixin push-right($properties) {
-  @include layout('margin', 0, $properties, 0, 0);
-}
-
-@mixin push-bottom($properties) {
-  @include layout('margin', 0, 0, $properties, 0);
-}
-
-@mixin push-left($properties) {
-  @include layout('margin', 0, 0, 0, $properties);
-}
+@mixin push-top($properties) { @include layout('margin', $properties, 0, 0, 0); }
+@mixin push-right($properties) { @include layout('margin', 0, $properties, 0, 0); }
+@mixin push-bottom($properties) { @include layout('margin', 0, 0, $properties, 0); }
+@mixin push-left($properties) { @include layout('margin', 0, 0, 0, $properties); }
 
 .pad {
   @include pad();
@@ -178,8 +152,7 @@ $sides: top, right, bottom, left;
 }
 
 /*
-  Spacing
-  Uniform space between sibling elements
+  Uniform space between child sibling elements
 */
 @mixin spacing($spacing: false) {
   > * + * {
@@ -193,10 +166,6 @@ $sides: top, right, bottom, left;
   }
 }
 
-/*
-  Spacing
-  Uniform margins and padding
-*/
 .spacing {
   @include spacing(1rem);
 }

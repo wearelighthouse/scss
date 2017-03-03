@@ -1,22 +1,25 @@
 
-// Library
+// Config
+@import 'config/colours';
+@import 'config/breakpoints';
 
+// Library
 @import 'library/reset';
 
+@import 'library/document';
 @import 'library/backgrounds';
-@import 'library/breakpoints';
-@import 'library/colours';
-@import 'library/forms';
 @import 'library/grids';
 @import 'library/layout';
 @import 'library/spacing';
+@import 'library/animation';
 
 @import 'library/typography';
-@import 'library/utilities';
-@import 'library/visibility';
-@import 'library/animation';
-@import 'library/transitions';
+@import 'library/forms';
 
+@import 'library/visibility';
 
 // Blocks
 @import 'blocks/button';
+
+// Views
+// @import 'views/';
