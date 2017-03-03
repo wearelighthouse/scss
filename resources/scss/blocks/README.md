@@ -53,7 +53,7 @@ Now that our _house.scss block has been completely compartmentalised, we leave c
 
 This is just helpful for other developers, and it keeps a nice map of our blocks without enforcing deeper folder structures.
 
-At the top of _house.scss, we document in comments:
+At the top of _house.scss, we document this in comments:
 
 /*
 
