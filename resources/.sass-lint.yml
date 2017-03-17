@@ -212,6 +212,7 @@ rules:
         - stroke-dashoffset
         - stroke-linecap
         - filter
+        - mix-blend-mode
         # (7) typography & text
         - font
         - font-family
