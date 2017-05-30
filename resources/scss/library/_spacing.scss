@@ -103,6 +103,8 @@ $sides: top, right, bottom, left;
 
 @mixin pad($properties...) { @include layout('padding', $properties...); }
 
+@mixin pad-verticals($properties) { @include layout('padding', $properties, 0); }
+@mixin pad-sides($properties) { @include layout('padding', 0, $properties); }
 @mixin pad-top($properties) { @include layout('padding', $properties, 0, 0, 0); }
 @mixin pad-right($properties) { @include layout('padding', 0, $properties, 0, 0); }
 @mixin pad-bottom($properties) { @include layout('padding', 0, 0, $properties, 0); }
@@ -110,6 +112,8 @@ $sides: top, right, bottom, left;
 
 @mixin push($properties...) { @include layout('margin', $properties...); }
 
+@mixin push-verticals($properties) { @include layout('margin', $properties, 0); }
+@mixin push-sides($properties) { @include layout('margin', 0, $properties); }
 @mixin push-top($properties) { @include layout('margin', $properties, 0, 0, 0); }
 @mixin push-right($properties) { @include layout('margin', 0, $properties, 0, 0); }
 @mixin push-bottom($properties) { @include layout('margin', 0, 0, $properties, 0); }
