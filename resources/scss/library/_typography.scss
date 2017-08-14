@@ -8,33 +8,6 @@
   
 */
 
-
-@function font-stack($family) {
-
-  $return: null;
-
-  @if ($family == 'A') {
-    $return: A, sans-serif;
-
-  } @else if ($family == 'B') {
-    $return: B, sans-serif;
-  }
-
-  @return $return;
-}
-
-@mixin font-scale($smallest, $largest) {
-
-  @media (max-width: 1200px) {
-    font-size: calc(#{$smallest}px + (#{$largest} - #{$smallest}) * ( (100vw - #{$b-min}px) / ( #{$b-max} - #{$b-min}) ));
-  }
-
-  @media (min-width: 1200px) {
-    font-size: #{$largest}px;
-  }
-
-}
-
 @mixin no-text {
   overflow: hidden;
   text-indent: 100%;
@@ -47,34 +20,112 @@
   white-space: nowrap;
 }
 
-@font-face {
+$f-smallest: 15;
+$f-biggest: 21;
 
+%f-family-soho {
+  font-family: 'SohoTemporary', 'SohoStd', Georgia, 'Times New Roman', Times, serif;
 }
 
-:root {
-  @include font-scale(16, 21);
+%f-family-myriad {
+  font-family: 'Myriad', 'Myriad Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-.h1 {
-  
+%f-h1 {
+  @include font-scale(23, 41);
+  font-weight: bold;
+  line-height: 1.3;
 }
 
-.h2 {
-
+%f-h2 {
+  @include font-scale(23, 41);
+  line-height: 1.45;
 }
 
-.h3 {
-
+%f-h2-h3 {
+  @include font-scale(18, 41);
 }
 
-.h4 {
-
+%f-h3 {
+  @include font-scale(21, 29);
+  font-weight: bold;
+  line-height: 1.55;
 }
 
-a {
+%f-h4 {
+  @include font-scale(20, 28);
+  line-height: 1.55;
+}
 
-  &:hover,
-  &:focus {
+%f-h5 {
+  @include font-scale(15, 22);
+  font-weight: bold;
+  line-height: 1.55;
+}
 
+%f-small {
+  font-size: .6em;
+}
+
+.#{$app} {
+  @extend %f-family-myriad;
+  @include font-scale($f-smallest, $f-biggest);
+  color: $c-text;
+  line-height: 1.5;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @extend %f-family-soho;
   }
+
+  h1 {
+    @extend %f-h1;
+  }
+
+  h2 {
+    @extend %f-h2;
+  }
+
+  h3 {
+    @extend %f-h3;
+  }
+
+  h4 {
+    @extend %f-h4;
+  }
+
+  h5 {
+    font-weight: bold;
+  }
+
+  .h3-h2 {
+    @extend %f-h2-h3;
+  }
+
+  .fs-small {
+    @extend %f-small;
+  }
+
+  .ta-c {
+    text-align: center;
+  }
+
+  .ws-n {
+    white-space: nowrap;
+  }
+
+  .co {
+    &-w {
+      color: $c-white;
+    }
+  }
+
+  a {
+    color: $c-button;
+  }
+
 }
+

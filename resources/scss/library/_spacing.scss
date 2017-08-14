@@ -1,168 +1,16 @@
-/*
-
-  PAD() and PUSH()
-
-  This is our big sexy plan to help you standardise spacing.
-
-  We use the keyword 'pad' to mean padding, and 'push' to mean margins. (Margin just doesn't shorten well, and it's not a verb.)
-
-  The values you give to pad() and push() work the same as padding: and margin: shorthand.
-
-  For example:
-
-    pad(x)                  padding-top: x; padding-right: x; padding-bottom: x; padding-left: x;
-    pad(x, y)               padding-top: x; padding-right: y; padding-bottom: x; padding-left: y;
-    pad(x, y, z)            padding-top: x; padding-right: y, padding-bottom: z; padding-left: y;
-
-  When you only want to specify one side, you can ignore the other values with a `0`.
-  A `0` does not set padding-x: 0; It just ignores that side and moves on.
-
-  For example:
-
-  pad(0, foo, bar, 0)       padding-right: foo; padding-bottom: bar;
-
-
-  PAD-X(O)
-
-  You can also use the pad-top/right/bottom/left mixins to target a single side:
-
-    pad-left(X)             padding-left: X;
-
-  
-  At the end of the file, we set up some simple helpers to use in your markup that just produces (1 * value).
-
-  .pad--sides {
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
   }
 
-  .push--verticals {
-  }
-  
-*/
-
-$values: (
-  'padding': 1rem,
-  'margin': 1rem
-);
-
-$sides: top, right, bottom, left;
-
-@mixin layout($property, $a: false, $b: false, $c: false, $d: false) {
-  $value: map-get($values, $property);
-
-  @if ($a) {
-    @if $a == 'verticals' or $a == 'sides' {
-
-      @if ($a == 'verticals') {
-        #{$property}-top: $value;
-        #{$property}-bottom: $value;
-      }
-      @else if ($a == 'sides') {
-        #{$property}-right: $value;
-        #{$property}-left: $value;
-      }
-      @else if ($a == 'top') {
-        #{$property}-top: $value;
-      }
-      @else if ($a == 'right') {
-        #{$property}-right: $value;
-      }
-      @else if ($a == 'bottom') {
-        #{$property}-bottom: $value;
-      }
-      @else if ($a == 'left') {
-        #{$property}-left: $value;
-      }
-    }
-
-    @else {
-      @if $d {
-        @if $a > 0 { #{$property}-top: $a * $value; }
-        @if $b > 0 { #{$property}-right: $b * $value; }
-        @if $c > 0 { #{$property}-bottom: $c * $value; }
-        @if $d > 0 { #{$property}-left: $d * $value; }
-      }
-      @else if $c {
-        @if $a > 0 { #{$property}-top: $a * $value; }
-        @if $b > 0 { #{$property}-right: $b * $value; #{$property}-left: $b * $value; }
-        @if $c > 0 { #{$property}-bottom: $c * $value; }
-      }
-      @else if $b {
-        @if $a > 0 { #{$property}-top: $a * $value; #{$property}-bottom: $a * $value; }
-        @if $b > 0 { #{$property}-left: $b * $value; #{$property}-right: $b * $value; }
-      }
-      @else if $a {
-        @if $a > 0 { #{$property}-top: $a * $value; #{$property}-right: $a * $value; #{$property}-bottom: $a * $value; #{$property}-left: $a * $value; }
-      }
-    }
-  }
-
-  @else {
-    #{$property}: $value;
-  }
+  @return $number;
 }
 
-@mixin pad($properties...) { @include layout('padding', $properties...); }
-
-@mixin pad-verticals($properties) { @include layout('padding', $properties, 0); }
-@mixin pad-sides($properties) { @include layout('padding', 0, $properties); }
-@mixin pad-top($properties) { @include layout('padding', $properties, 0, 0, 0); }
-@mixin pad-right($properties) { @include layout('padding', 0, $properties, 0, 0); }
-@mixin pad-bottom($properties) { @include layout('padding', 0, 0, $properties, 0); }
-@mixin pad-left($properties) { @include layout('padding', 0, 0, 0, $properties); }
-
-@mixin push($properties...) { @include layout('margin', $properties...); }
-
-@mixin push-verticals($properties) { @include layout('margin', $properties, 0); }
-@mixin push-sides($properties) { @include layout('margin', 0, $properties); }
-@mixin push-top($properties) { @include layout('margin', $properties, 0, 0, 0); }
-@mixin push-right($properties) { @include layout('margin', 0, $properties, 0, 0); }
-@mixin push-bottom($properties) { @include layout('margin', 0, 0, $properties, 0); }
-@mixin push-left($properties) { @include layout('margin', 0, 0, 0, $properties); }
-
-.pad {
-  @include pad();
-}
-
-.pad--verticals {
-  @include pad(verticals);
-}
-
-.pad--sides {
-  @include pad(sides);
-}
-
-@each $side in $sides {
-  .pad--#{$side} {
-    padding-#{$side}: map-get($values, 'padding');
-  }
-}
-
-.push {
-  @include push();
-}
-
-.push--verticals {
-  @include push(verticals);
-}
-
-.push--sides {
-  @include push(sides);
-}
-
-@each $side in $sides {
-  .push--#{$side} {
-    margin-#{$side}: map-get($values, 'padding');
-  }
-}
-
-/*
-  Uniform space between child sibling elements
-*/
 @mixin spacing($spacing: false) {
   > * + * {
 
     @if ($spacing == false) {
-      margin-top: 1rem;
+      margin-top: 1em;
 
     } @else {
       margin-top: $spacing;
@@ -170,6 +18,566 @@ $sides: top, right, bottom, left;
   }
 }
 
-.spacing {
-  @include spacing(1rem);
+@mixin gutter($gutter: false) {
+  > * + * {
+
+    @if ($gutter == false) {
+      margin-left: 1em;
+
+    } @else {
+      margin-left: $gutter;
+    }
+  }
+}
+
+$multiplier: 2;
+
+$em1: .5em;
+$em2: $em1 * $multiplier;
+$em3: $em2 * $multiplier;
+$em4: $em3 * $multiplier;
+$em5: $em3 * $multiplier;
+
+$vw1: .5vw;
+$vw2: $vw1 * $multiplier;
+$vw3: $vw2 * $multiplier;
+$vw4: $vw3 * $multiplier;
+$vw5: $vw3 * $multiplier;
+
+// the max values are there to stop the margins/padding from growing when the container has stopped doing so.
+// we basically make a 'vw' by grabbin (.container / 100) and multiply buy the previous vw amount.
+
+$space1: calc(#{$em1} + #{$vw1});
+$space1Max: calc(#{$em1} + (#{px($b-max)} / 100 * #{strip-unit($vw1)}));
+
+$space2: calc(#{$em2} + #{$vw2});
+$space2Max: calc(#{$em2} + (#{px($b-max)} / 100 * #{strip-unit($vw2)}));
+
+$space3: calc(#{$em3} + #{$vw3});
+$space3Max: calc(#{$em3} + (#{px($b-max)} / 100 * #{strip-unit($vw3)}));
+
+$space4: calc(#{$em4} + #{$vw4});
+$space4Max: calc(#{$em4} + (#{px($b-max)} / 100 * #{strip-unit($vw4)}));
+
+$space5: calc(#{$em5} + #{$vw5});
+$space5Max: calc(#{$em5} + (#{px($b-max)} / 100 * #{strip-unit($vw5)}));
+
+@mixin space-maker($property, $breakpoint, $value1, $value2) {
+  #{$property}: #{$value1};
+
+  @media (min-width: px($breakpoint)) {
+    padding-top: #{$value2};
+  }
+}
+
+%pt-1 {
+  padding-top: #{$space1};
+
+  @media (min-width: px($b-max)) {
+    padding-top: #{$space1Max};
+  }
+}
+
+%pt-2 {
+  padding-top: #{$space2};
+
+  @media (min-width: px($b-max)) {
+    padding-top: #{$space2Max};
+  }
+}
+
+%pt-3 {
+  padding-top: #{$space3};
+
+  @media (min-width: px($b-max)) {
+    padding-top: #{$space3Max};
+  }
+}
+
+%pt-4 {
+  padding-top: #{$space4};
+
+  @media (min-width: px($b-max)) {
+    padding-top: #{$space4Max};
+  }
+}
+
+%pt-5 {
+  padding-top: #{$space5};
+
+  @media (min-width: px($b-max)) {
+    padding-top: #{$space5Max};
+  }
+}
+
+%pr-1 {
+  padding-right: #{$space1};
+
+  @media (min-width: px($b-max)) {
+    padding-right: #{$space1Max};
+  }
+}
+
+%pr-2 {
+  padding-right: #{$space2};
+
+  @media (min-width: px($b-max)) {
+    padding-right: #{$space2Max};
+  }
+}
+
+%pr-3 {
+  padding-right: #{$space3};
+
+  @media (min-width: px($b-max)) {
+    padding-right: #{$space3Max};
+  }
+}
+
+%pr-4 {
+  padding-right: #{$space4};
+
+  @media (min-width: px($b-max)) {
+    padding-right: #{$space4Max};
+  }
+}
+
+%pb-1 {
+  padding-bottom: #{$space1};
+
+  @media (min-width: px($b-max)) {
+    padding-bottom: #{$space1Max};
+  }
+}
+
+%pb-2 {
+  padding-bottom: #{$space2};
+
+  @media (min-width: px($b-max)) {
+    padding-bottom: #{$space2Max};
+  }
+}
+
+%pb-3 {
+  padding-bottom: #{$space3};
+
+  @media (min-width: px($b-max)) {
+    padding-bottom: #{$space3Max};
+  }
+}
+
+%pb-4 {
+  padding-bottom: #{$space4};
+
+  @media (min-width: px($b-max)) {
+    padding-bottom: #{$space4Max};
+  }
+}
+
+%pb-5 {
+  padding-bottom: #{$space5};
+
+  @media (min-width: px($b-max)) {
+    padding-bottom: #{$space5Max};
+  }
+}
+
+%pl-1 {
+  padding-left: #{$space1};
+
+  @media (min-width: px($b-max)) {
+    padding-left: #{$space1Max};
+  }
+}
+
+%pl-2 {
+  padding-left: #{$space2};
+
+  @media (min-width: px($b-max)) {
+    padding-left: #{$space2Max};
+  }
+}
+
+%pl-3 {
+  padding-left: #{$space3};
+
+  @media (min-width: px($b-max)) {
+    padding-left: #{$space3Max};
+  }
+}
+
+%pl-4 {
+  padding-left: #{$space4};
+
+  @media (min-width: px($b-max)) {
+    padding-left: #{$space4Max};
+  }
+}
+
+%mt-1 {
+  margin-top: #{$space1};
+
+  @media (min-width: px($b-max)) {
+    margin-top: #{$space1Max};
+  }
+}
+
+%mt-2 {
+  margin-top: #{$space2};
+
+  @media (min-width: px($b-max)) {
+    margin-top: #{$space2Max};
+  }
+}
+
+%mt-3 {
+  margin-top: #{$space3};
+
+  @media (min-width: px($b-max)) {
+    margin-top: #{$space3Max};
+  }
+}
+
+%mt-4 {
+  margin-top: #{$space4};
+
+  @media (min-width: px($b-max)) {
+    margin-top: #{$space4Max};
+  }
+}
+
+%mr-1 {
+  margin-right: #{$space1};
+
+  @media (min-width: px($b-max)) {
+    margin-right: #{$space1Max};
+  }
+}
+
+%mr-2 {
+  margin-right: #{$space2};
+
+  @media (min-width: px($b-max)) {
+    margin-right: #{$space2Max};
+  }
+}
+
+%mr-3 {
+  margin-right: #{$space3};
+
+  @media (min-width: px($b-max)) {
+    margin-right: #{$space3Max};
+  }
+}
+
+%mr-4 {
+  margin-right: #{$space4};
+
+  @media (min-width: px($b-max)) {
+    margin-right: #{$space4Max};
+  }
+}
+
+%mb-1 {
+  margin-bottom: #{$space1};
+
+  @media (min-width: px($b-max)) {
+    margin-bottom: #{$space1Max};
+  }
+}
+
+%mb-2 {
+  margin-bottom: #{$space2};
+
+  @media (min-width: px($b-max)) {
+    margin-bottom: #{$space2Max};
+  }
+}
+
+%mb-3 {
+  margin-bottom: #{$space3};
+
+  @media (min-width: px($b-max)) {
+    margin-bottom: #{$space3Max};
+  }
+}
+
+%mb-4 {
+  margin-bottom: #{$space4};
+
+  @media (min-width: px($b-max)) {
+    margin-bottom: #{$space4Max};
+  }
+}
+
+%ml-1 {
+  margin-left: #{$space1};
+
+  @media (min-width: px($b-max)) {
+    margin-left: #{$space1Max};
+  }
+}
+
+%ml-2 {
+  margin-left: #{$space2};
+
+  @media (min-width: px($b-max)) {
+    margin-left: #{$space2Max};
+  }
+}
+
+%ml-3 {
+  margin-left: #{$space3};
+
+  @media (min-width: px($b-max)) {
+    margin-left: #{$space3Max};
+  }
+}
+
+%ml-4 {
+  margin-left: #{$space4};
+
+  @media (min-width: px($b-max)) {
+    margin-left: #{$space4Max};
+  }
+}
+
+.#{$app} {
+
+  .spacing {
+    @include spacing(1em);
+  }
+
+  .pv {
+    @extend %pt-1;
+    @extend %pb-1;
+
+    &-b1 {
+      @extend %pt-2;
+      @extend %pb-2;
+    }
+
+    &-b2 {
+      @extend %pt-3;
+      @extend %pb-3;
+    }
+
+    &-b3 {
+      @extend %pt-4;
+      @extend %pb-4;
+    }
+
+    &-b4 {
+      @extend %pt-5;
+      @extend %pb-5;
+    }
+  }
+
+  .ps {
+    @extend %pr-1;
+    @extend %pl-1;
+
+    &-b1 {
+      @extend %pr-2;
+      @extend %pl-2;
+    }
+
+    &-b2 {
+      @extend %pr-3;
+      @extend %pl-3;
+    }
+
+    &-b3 {
+      @extend %pr-4;
+      @extend %pl-4;
+    }
+  }
+
+  .pt {
+    @extend %pt-1;
+
+    &-b1 {
+      @extend %pt-2;
+    }
+
+    &-b2 {
+      @extend %pt-3;
+    }
+
+    &-b3 {
+      @extend %pt-4;
+    }
+  }
+
+  .pr {
+    @extend %pr-1;
+
+    &-b1 {
+      @extend %pr-2;
+    }
+
+    &-b2 {
+      @extend %pr-3;
+    }
+
+    &-b3 {
+      @extend %pr-4;
+    }
+  }
+
+  .pb {
+    @extend %pb-1;
+
+    &-b1 {
+      @extend %pb-2;
+    }
+
+    &-b2 {
+      @extend %pb-3;
+    }
+
+    &-b3 {
+      @extend %pb-4;
+    }
+  }
+
+  .pl {
+    @extend %pl-1;
+
+    &-b1 {
+      @extend %pl-2;
+    }
+
+    &-b2 {
+      @extend %pl-3;
+    }
+
+    &-b3 {
+      @extend %pl-4;
+    }
+  }
+
+  .mv {
+    @extend %mt-1;
+    @extend %mb-1;
+
+    &-b1 {
+      @extend %mt-2;
+      @extend %mb-2;
+    }
+
+    &-b2 {
+      @extend %mt-3;
+      @extend %mb-3;
+    }
+  }
+
+  .ms {
+    @extend %mr-1;
+    @extend %ml-1;
+
+    &-b1 {
+      @extend %mr-2;
+      @extend %ml-2;
+    }
+
+    &-b2 {
+      @extend %mr-3;
+      @extend %ml-3;
+    }
+  }
+
+  .mt {
+    @extend %mt-1;
+
+    &-b1 {
+      @extend %mt-2;
+    }
+
+    &-b2 {
+      @extend %mt-3;
+    }
+  }
+
+  .mr {
+    @extend %mr-1;
+
+    &-b1 {
+      @extend %mr-2;
+    }
+
+    &-b2 {
+      @extend %mr-3;
+    }
+  }
+
+  .mb {
+    @extend %mb-1;
+
+    &-b1 {
+      @extend %mb-2;
+    }
+
+    &-b2 {
+      @extend %mb-3;
+    }
+  }
+
+  .ml {
+    @extend %ml-1;
+
+    &-b1 {
+      @extend %ml-2;
+    }
+
+    &-b2 {
+      @extend %ml-3;
+    }
+  }
+
+  .s {
+    > * + * {
+      @extend %mt-1;
+    }
+
+    &-s1 {
+      > * + * {
+        margin-top: .25em;
+      }
+    }
+
+    &-b1 {
+      > * + * {
+        @extend %mt-2;
+      }
+    }
+
+    &-b2 {
+      > * + * {
+        @extend %mt-3;
+      }
+    }
+
+    &-b3 {
+      > * + * {
+        margin-top: 1.5em;
+      }
+    }
+
+    &-b4 {
+      > * + * {
+        margin-top: 2em;
+      }
+    }
+  }
+
+  .g {
+    > * + * {
+      margin-left: .2em;
+
+      @media (min-width: 1020px) {
+        margin-left: calc(.4em + 1.5vw);
+      }
+    }
+  }
 }

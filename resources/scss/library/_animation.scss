@@ -7,3 +7,78 @@
   $t-
 
 */
+
+%t-input {
+  transition: background .15s ease-in, border .3s ease-in, opacity .3s ease-in;
+}
+
+%t-fade {
+  transition: opacity .3s ease-in, all .3s ease-in;
+}
+
+$t-duration: .3s;
+$t-easing: cubic-bezier(0, 1.5, 1, 1);
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: scale(.9) translateY(1em);
+  }
+
+  80% {
+    opacity: 1;
+    transform: scale(1) translateY(-.2em);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(1);
+  }
+}
+
+@keyframes fadeDown {
+  0% {
+    transform: translateY(-1em);
+  }
+
+  100% {
+    transform: translateY(1);
+  }
+}
+
+@keyframes fadeUp {
+  0% {
+    transform: translateY(-1em);
+  }
+
+  100% {
+    transform: translateY(1);
+  }
+}
+
+.#{$app} {
+
+  .a {
+
+    /* @keyframes duration | timing-function | delay | iteration-count | direction | fill-mode | play-state | name */
+
+    &-fiu,
+    &-fd,
+    &-fu {
+      animation-fill-mode: forwards;
+    }
+
+    &-fiu {
+      opacity: 0;
+      animation: $t-duration $t-easing 0s fadeInUp forwards;
+    }
+
+    &-fd {
+      animation: $t-duration $t-easing 0s fadeDown forwards;
+    }
+
+    &-fu {
+      animation: $t-duration $t-easing 0s fadeUp forwards;
+    }
+  }
+}

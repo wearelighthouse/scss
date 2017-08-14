@@ -1,0 +1,21 @@
+.u-d {
+  &-f {
+    display: flex;
+  }
+
+  &-if {
+    display: inline-flex;
+  }
+
+  &-b {
+    display: block;
+  }
+
+  &-ib {
+    display: inline-block;
+  }
+
+  &-n {
+    display: none;
+  }
+}

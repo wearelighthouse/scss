@@ -4,17 +4,70 @@
   
 */
 
+$input-border-size: .2em !global;
 
-input,
-textarea,
-select {
+%input-placeholder {
+  background: $c-tan-l1;
+  border-bottom: $input-border-size solid $c-tan-d1;    
+  color: $c-tan-d2;
+}
 
-  &:focus {
+%input-filled {
+  background-color: $c-white;
+  border-bottom: $input-border-size solid $c-select;
+  color: $c-text;
+}
 
+.#{$app} {
+
+  // reset from external
+  input {
+    height: auto;
+    padding: 0;
+  }
+
+  label {
+    font-weight: normal;
+  }
+
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
+  }
+
+  .number,
+  .text {
+    @extend %f-h1;
+    @extend %f-family-soho;
+    @extend %t-input;
+    @extend %input-placeholder;
+  }
+
+  select {
+    @extend %f-h4;
+    @extend %f-family-soho;
+  }
+
+  .number {
+    width: 2em;
+    padding: .3em 0 0;
+
+    &:not(:placeholder-shown) {    
+      @extend %input-filled;
+    }
+  }
+
+  .text,
+  .email {
+    padding: .3em .3em 0;
+  }
+
+  .email {
+    @extend %f-h2;
+    @extend %f-family-soho;
+    background-color: $c-white;
+    color: $c-text;
   }
 }
 
-[type='radio'],
-[type='checkbox'] {
-
-}

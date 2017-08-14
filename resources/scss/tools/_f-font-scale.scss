@@ -1,0 +1,11 @@
+@mixin font-scale($smallest, $largest) {
+
+  @media (max-width: 1200px) {
+    font-size: calc(#{$smallest}px + (#{$largest} - #{$smallest}) * ( (100vw - #{$b-min}px) / ( #{$b-max} - #{$b-min}) ));
+  }
+
+  @media (min-width: 1200px) {
+    font-size: #{$largest}px;
+  }
+
+}

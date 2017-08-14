@@ -6,9 +6,57 @@
   
 */
 
-
 @mixin background-size($size) {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: $size;
+}
+
+.#{$app} {
+
+  .b {
+    background-color: $c-base;
+
+    &-d1 {
+      background-color: $c-tan-d1;
+    }
+
+    &-d2 {
+      background-color: $c-tan-d2;
+    }
+
+    &-d3 {
+      background-color: $c-tan-d3;
+    }
+
+    &-d4 {
+      background-color: $c-tan-d4;
+    }
+
+    &-l1 {
+      background-color: $c-tan-l1;
+    }
+
+    &-l2 {
+      background-color: $c-tan-l2;
+    }
+
+    // white
+    &-w {
+      background-color: $c-white;
+    }
+
+    // good
+    &-g {
+      background-color: $c-good;
+    }
+
+    &-test1 {
+      background-color: #3B3930;
+    }
+
+    &-test2 {
+      background-color: #4A483D;
+    }
+  }
 }

@@ -1,0 +1,301 @@
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@mixin spacing($spacing: false) {
+  > * + * {
+
+    @if ($spacing == false) {
+      margin-top: 1em;
+
+    } @else {
+      margin-top: $spacing;
+    }
+  }
+}
+
+@mixin gutter($gutter: false) {
+  > * + * {
+
+    @if ($gutter == false) {
+      margin-left: 1em;
+
+    } @else {
+      margin-left: $gutter;
+    }
+  }
+}
+
+$multiplier: 1.5;
+
+$em1: .5em;
+$em2: $em1 * $multiplier;
+$em3: $em2 * $multiplier;
+$em4: $em3 * $multiplier;
+$em5: $em3 * $multiplier;
+
+$vw1: .5vw;
+$vw2: $vw1 * $multiplier;
+$vw3: $vw2 * $multiplier;
+$vw4: $vw3 * $multiplier;
+$vw5: $vw3 * $multiplier;
+
+// the max values are there to stop the margins/padding from growing when the container has stopped doing so.
+// we basically make a 'vw' by grabbin (.container / 100) and multiply buy the previous vw amount.
+
+$space1: calc(#{$em1} + #{$vw1});
+$space1Max: calc(#{$em1} + (#{px($b-max)} / 100 * #{strip-unit($vw1)}));
+
+$space2: calc(#{$em2} + #{$vw2});
+$space2Max: calc(#{$em2} + (#{px($b-max)} / 100 * #{strip-unit($vw2)}));
+
+$space3: calc(#{$em3} + #{$vw3});
+$space3Max: calc(#{$em3} + (#{px($b-max)} / 100 * #{strip-unit($vw3)}));
+
+$space4: calc(#{$em4} + #{$vw4});
+$space4Max: calc(#{$em4} + (#{px($b-max)} / 100 * #{strip-unit($vw4)}));
+
+$space5: calc(#{$em5} + #{$vw5});
+$space5Max: calc(#{$em5} + (#{px($b-max)} / 100 * #{strip-unit($vw5)}));
+
+
+  .spacing {
+    @include spacing(1em);
+  }
+
+  .pv {
+    @extend %pt-1;
+    @extend %pb-1;
+
+    &-b1 {
+      @extend %pt-2;
+      @extend %pb-2;
+    }
+
+    &-b2 {
+      @extend %pt-3;
+      @extend %pb-3;
+    }
+
+    &-b3 {
+      @extend %pt-4;
+      @extend %pb-4;
+    }
+
+    &-b4 {
+      @extend %pt-5;
+      @extend %pb-5;
+    }
+  }
+
+  .ps {
+    @extend %pr-1;
+    @extend %pl-1;
+
+    &-b1 {
+      @extend %pr-2;
+      @extend %pl-2;
+    }
+
+    &-b2 {
+      @extend %pr-3;
+      @extend %pl-3;
+    }
+
+    &-b3 {
+      @extend %pr-4;
+      @extend %pl-4;
+    }
+  }
+
+  .pt {
+    @extend %pt-1;
+
+    &-b1 {
+      @extend %pt-2;
+    }
+
+    &-b2 {
+      @extend %pt-3;
+    }
+
+    &-b3 {
+      @extend %pt-4;
+    }
+  }
+
+  .pr {
+    @extend %pr-1;
+
+    &-b1 {
+      @extend %pr-2;
+    }
+
+    &-b2 {
+      @extend %pr-3;
+    }
+
+    &-b3 {
+      @extend %pr-4;
+    }
+  }
+
+  .pb {
+    @extend %pb-1;
+
+    &-b1 {
+      @extend %pb-2;
+    }
+
+    &-b2 {
+      @extend %pb-3;
+    }
+
+    &-b3 {
+      @extend %pb-4;
+    }
+  }
+
+  .pl {
+    @extend %pl-1;
+
+    &-b1 {
+      @extend %pl-2;
+    }
+
+    &-b2 {
+      @extend %pl-3;
+    }
+
+    &-b3 {
+      @extend %pl-4;
+    }
+  }
+
+  .mv {
+    @extend %mt-1;
+    @extend %mb-1;
+
+    &-b1 {
+      @extend %mt-2;
+      @extend %mb-2;
+    }
+
+    &-b2 {
+      @extend %mt-3;
+      @extend %mb-3;
+    }
+  }
+
+  .ms {
+    @extend %mr-1;
+    @extend %ml-1;
+
+    &-b1 {
+      @extend %mr-2;
+      @extend %ml-2;
+    }
+
+    &-b2 {
+      @extend %mr-3;
+      @extend %ml-3;
+    }
+  }
+
+  .mt {
+    @extend %mt-1;
+
+    &-b1 {
+      @extend %mt-2;
+    }
+
+    &-b2 {
+      @extend %mt-3;
+    }
+  }
+
+  .mr {
+    @extend %mr-1;
+
+    &-b1 {
+      @extend %mr-2;
+    }
+
+    &-b2 {
+      @extend %mr-3;
+    }
+  }
+
+  .mb {
+    @extend %mb-1;
+
+    &-b1 {
+      @extend %mb-2;
+    }
+
+    &-b2 {
+      @extend %mb-3;
+    }
+  }
+
+  .ml {
+    @extend %ml-1;
+
+    &-b1 {
+      @extend %ml-2;
+    }
+
+    &-b2 {
+      @extend %ml-3;
+    }
+  }
+
+  .s {
+    > * + * {
+      @extend %mt-1;
+    }
+
+    &-s1 {
+      > * + * {
+        margin-top: .25em;
+      }
+    }
+
+    &-b1 {
+      > * + * {
+        @extend %mt-2;
+      }
+    }
+
+    &-b2 {
+      > * + * {
+        @extend %mt-3;
+      }
+    }
+
+    &-b3 {
+      > * + * {
+        margin-top: 1.5em;
+      }
+    }
+
+    &-b4 {
+      > * + * {
+        margin-top: 2em;
+      }
+    }
+  }
+
+  .g {
+    > * + * {
+      margin-left: .2em;
+
+      @media (min-width: 1020px) {
+        margin-left: calc(.4em + 1.5vw);
+      }
+    }
+  }

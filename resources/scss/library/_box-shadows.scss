@@ -1,0 +1,11 @@
+%shadow {
+  box-shadow: 0 .15em .25em rgba($c-shadow, .3), 0 .25em .75em rgba($c-shadow, .1);
+}
+
+%shadow-s1 {
+  box-shadow: 0 .05em .05em rgba($c-shadow, .1);
+}
+
+%shadow-s2 {
+  box-shadow: 0 6px 28px 0 rgba(0, 0, 0, .13), 0 2px 4px 0 rgba(0, 0, 0, .13), inset 0 -3px 0 0 #E5E5E5;
+}

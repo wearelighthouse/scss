@@ -1,0 +1,56 @@
+// overflow:
+.u-o {
+  &-v {
+    overflow: visible;
+  }
+  
+  &-h {
+    overflow: hidden;
+  }
+
+  &-s {
+    overflow: scroll;
+  }
+
+  &-a {
+    overflow: auto;
+  }
+}
+
+// overflow-x:
+.u-ox {
+  &-v {
+    overflow-x: visible;
+  }
+  
+  &-h {
+    overflow-x: hidden;
+  }
+
+  &-s {
+    overflow-x: scroll;
+  }
+
+  &-a {
+    overflow-x: auto;
+  }
+}
+
+// overflow-y:
+.u-oy {
+  &-v {
+    overflow-x: visible;
+  }
+  
+  &-h {
+    overflow-x: hidden;
+  }
+
+  &-s {
+    overflow-x: scroll;
+  }
+
+  &-a {
+    overflow-x: auto;
+  }
+}

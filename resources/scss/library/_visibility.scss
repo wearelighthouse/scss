@@ -6,35 +6,18 @@
 
 */
 
-@mixin hide {
+@mixin bury {
   position: absolute;
-  visibility: hidden;
+  z-index: -99;
+  opacity: 0;
+  pointer-events: none;
 }
 
-@mixin show {
-  position: static;
-  visibility: visible;
-}
+.#{$app} {
 
-.is--hidden {
-  @include hide;
-}
+  .bury {
+    @include bury;
+    display: block !important; // this
+  }
 
-.is--shown {
-  @include show;
-}
-
-@mixin sr-only() {
-  position: absolute;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  border: 0;
-};
-
-.sr--only {
-  @include sr-only();
 }

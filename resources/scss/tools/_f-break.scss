@@ -1,0 +1,16 @@
+@function break($compare, $size) {
+
+  $return: null;
+
+  @if $compare == '<' {
+    $return: 'max-width:' + ($size - 1px);
+  } @else if $compare == '<=' {
+    $return: 'max-width:' + ($size) + 'px';
+  } @else if $compare == '>=' {
+    $return: 'min-width:' + ($size) + 'px';
+  } @else {
+    $return: 'min-width:' + ($size + 1px);
+  }
+
+  @return $return;
+}

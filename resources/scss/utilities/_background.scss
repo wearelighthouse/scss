@@ -1,0 +1,27 @@
+// background-size:
+.u-bgs {
+  &-cv {
+    background-size: cover;
+  }
+
+  &-cn {
+    background-size: contain;
+  }
+}
+
+// background-position:
+.u-bgp {
+  &-tl {
+    background-position: top left;
+  }
+
+  &-tr {
+    background-position: top right;
+  }
+}
+
+.u-b {
+  &-cover {
+    @extend .u-bs-c;
+  }
+}

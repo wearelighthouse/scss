@@ -7,3 +7,75 @@
   We tend to lean on Flex where possible - floats and inline-block are quite easily replaced.
   
 */
+
+%m-middle {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+$containerOutside: .8em;
+$containerOutsideB1: calc(1em + 1vw);
+
+$gridPx:    $b-fore;
+$colPx:     76;
+$gutterPx:  30;
+
+@function colspan($count) {
+
+  /*
+
+    SUM
+
+    # of cols as a width (% of total width)
+    # of gutters between those cols (% of total width)
+
+  */
+
+  @return ($count * percentage($colPx/$gridPx)) + (($count - 1) * percentage($gutterPx/$gridPx));
+
+}
+
+
+
+@mixin c {
+  max-width: px($b-fore);
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (max-width: 599px) {
+    padding-right: $containerOutside;
+    padding-left: $containerOutside;
+  }
+
+  @media (min-width: 600px) {
+    padding-right: $containerOutsideB1;
+    padding-left: $containerOutsideB1;
+  }
+}
+
+%c {
+  @include c;
+}
+
+.#{$app} {
+  @extend %m-middle;
+  max-width: #{$b-max}px;
+
+  .c {
+    @include c;
+
+    &-s1 {
+      @extend %c;
+      max-width: #{$b-interstadial}px;
+    }
+
+    &-s2 {
+      @extend %c;
+      max-width: #{$b-goosefish}px;
+    }
+
+    &-b1 {
+      max-width: #{$b-max}px;
+    }
+  }
+}

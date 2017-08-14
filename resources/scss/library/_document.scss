@@ -4,8 +4,19 @@
   
 */
 
+%focus {
+  outline: none;
+  box-shadow: 0 0 0 2px $c-yellow-l1 !important;
+}
 
-body {
+.#{$app} {
+  @extend %pb-4;
   overflow-x: hidden;
-  min-width: $b-min;
+  overflow-y: auto;
+  min-height: 100vh;
+  background: $c-base;
+  
+  *:focus {
+    @extend %focus;
+  }
 }
