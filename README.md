@@ -108,9 +108,9 @@ Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-con
 ```
 // For inline explanations
 
-/*
-  For documentation
-*/
+/**
+ * For documentation
+ */
 ```
 
 ### BEM
