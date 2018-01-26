@@ -17,7 +17,7 @@ Linting SCSS for consistency - and victory!
 	- [Extend directive](#extend-directive)
 	- [Nested selectors](#nested-selectors)
   - [Nested modifiers](#nested-modifiers)
-4. [Starter](#starter)
+4. [Framework](#framework)
 
 ## 1. Installation
 
@@ -299,15 +299,8 @@ When nesting modifiers like `@media` and `:hover` it is imporant that any nested
 }
 ```
 
-## 3. Starter
+## 3. Framework
 
-When starting a project you should start with the files found at [`resources/scss`](resources/scss).
+When building a project's CSS, you should start with the files found at [`https://github.com/wearelighthouse/iotacss`](wearelighthouse/iotacss).
 
-### Blocks
-
-### Config
-
-### Library
-
-### Views
-    Code referring to specific views or pages
+This is our own version of the IotaCSS framework [`http://iotacss.com/docs`](IotaCSS Docs) - which you're also welcome to use.
