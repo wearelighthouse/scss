@@ -301,6 +301,6 @@ When nesting modifiers like `@media` and `:hover` it is imporant that any nested
 
 ## 3. Framework
 
-When building a project's CSS, you should start with the files found at [Wearelighthouse/IotaCSS](https://github.com/wearelighthouse/iotacss).
+When building a project's CSS, you should start with the files found at [wearelighthouse/iotaCSS](https://github.com/wearelighthouse/iotacss).
 
 This is our own version of the IotaCSS framework [IotaCSS Docs](http://iotacss.com/docs) - which you're also welcome to use.
