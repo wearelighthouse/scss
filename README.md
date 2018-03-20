@@ -124,12 +124,6 @@ We use BEM to build up `blocks` - like a header, a sidebar, a 'content' block. A
 
 [How we use BEM in Blocks](/resources/scss/blocks)
 
-### ID selectors
-
-While it is possible to select elements by ID in CSS, it should generally be considered an anti-pattern. ID selectors introduce an unnecessarily high level of [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Specificity) to your rule declarations, and they are not reusable.
-
-For more on this subject, read [CSS Wizardry's article](http://csswizardry.com/2014/07/hacks-for-dealing-with-specificity/) on dealing with specificity.
-
 ### JavaScript selectors
 
 Avoid binding to the same class in both your CSS and JavaScript. Conflating the two often leads to, at a minimum, time wasted during refactoring when a developer must cross-reference each class they are changing, and at its worst, developers being afraid to make changes for fear of breaking functionality.
@@ -164,15 +158,16 @@ See https://toddmotto.com/data-js-selectors-enhancing-html5-development-by-separ
 ### Ordering of property declarations (property-sort-order)
 
 1. `@include` declarations - Ordered by [property groups](.scss-lint.yml#L133).
-2. Property declarations
+2. `@extend` declarations - Ordered by [property groups](.scss-lint.yml#L133).
+2. Property declarations - Ordered by [property groups](.scss-lint.yml#L133).
 3. Nested selectors
 
 ```
-.tab {
+.c-tab {
   @include border();
-  border-bottom: 0px;
+  border-bottom-width: 1px;
 
-  a {
+  .tab__button {
     ...
   }
 }
@@ -184,13 +179,11 @@ Prefer dash-cased variable names (e.g. `$my-variable`) over camelCased or snake_
 
 ### Mixins
 
-Mixins should be used to DRY up your code, add clarity, or abstract complexity--in much the same way as well-named functions. Mixins that accept no arguments can be useful for this, but note that if you are not compressing your payload (e.g. gzip), this may contribute to unnecessary code duplication in the resulting styles.
+Mixins should be used to DRY up your code, add clarity, or abstract complexity--in much the same way as well-named functions. Mixins that accept no arguments can be useful for this.
 
-### Extend directive
+Mixins can often be replaced with a generic set of classes like an Object (for example, .o-aspect-ratio) with a few variations.
 
-`@extend` should be avoided because it has unintuitive and potentially dangerous behaviour, especially when used with nested selectors. Even extending top-level placeholder selectors can cause problems if the order of selectors ends up changing later (e.g. if they are in other files and the order the files are loaded shifts).
-
-There are cases where `@extend` fits well - usually for more closely classes and properties, rather than something global like a `clearfix`. If you're feeling clever nonetheless, keep an eye on how your `@extend` compiles, and preferably reference a [`%placeholder`](http://thesassway.com/intermediate/understanding-placeholder-selectors).
+Ensure that your use of a mixin is not adding repetitive CSS in your compiled CSS.
 
 ### Nested selectors
 
