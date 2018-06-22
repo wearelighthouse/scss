@@ -21,7 +21,7 @@ Linting SCSS for consistency - and victory!
 
 ## 1. Installation
 
-For both `sass-lint` and `scss-lint` you should place the linter config in the root of your project. You can find the appropriate config in [`resources`](resources).
+For both `sass-lint` and `scss-lint` you should place the linter config in the root of your project. You can find the appropriate config in [`devDependencies/resources`](https://github.com/wearelighthouse/devDependencies/tree/master/resources).
 
 **N.B.** you only need to install one of the below!
 
@@ -41,13 +41,17 @@ This is cumbersome so you should probably install a linter package for your favo
 
 Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-contrib-sass-lint) to get setup with Sublime Text.
 
+#### Brackets
+
+The extension [Brackets Sass Lint](https://github.com/brackets-userland/brackets-sass-lint) with the [`.sass-lint.yml`](https://github.com/wearelighthouse/scss/blob/master/.sass-lint.yml) config file will lint both sass and scss within Brackets.
+
 ### [`scss-lint`](https://github.com/brigade/scss-lint)
 
 Use the following commad to install `scss-lint`:
 
 `gem install scss_lint`
 
-Once that is done you canthen lint files with the following commad:
+Once that is done you can then lint files with the following commad:
 
 `scss-lint path/to/your/scss/**/*.scss`
 
