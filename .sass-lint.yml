@@ -73,7 +73,7 @@ rules:
   no-invalid-hex: 1
   no-mergeable-selectors: 1
   no-misspelled-properties:
-    - 1
+    - 0
     - extra-properties: []
   no-qualifying-elements:
     - 1
@@ -87,7 +87,7 @@ rules:
     - 1
     - additional-identifiers: []
       excluded-identifiers: []
-  placeholder-in-extend: 1
+  placeholder-in-extend: 0
   placeholder-name-format:
     - 1
     - convention: hyphenatedbem

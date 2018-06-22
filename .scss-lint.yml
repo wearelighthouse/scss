@@ -114,7 +114,7 @@ linters:
     ignore_parent_selectors: false
 
   PlaceholderInExtend:
-    enabled: true
+    enabled: false
 
   PrivateNamingConvention:
     enabled: false
