@@ -26,8 +26,8 @@ rules:
   empty-line-between-blocks:
     - 1
     - ignore-single-line-rulesets: true
-  extends-before-declarations: 1
-  extends-before-mixins: 1
+  extends-before-declarations: 0
+  extends-before-mixins: 0
   final-newline:
     - 0
     - include: true
