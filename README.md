@@ -41,6 +41,10 @@ This is cumbersome so you should probably install a linter package for your favo
 
 Follow these [instructions](https://packagecontrol.io/packages/SublimeLinter-contrib-sass-lint) to get setup with Sublime Text.
 
+#### Atom
+
+The plugin [linter-sass-lint](https://atom.io/packages/linter-sass-lint) with the [`.sass-lint.yml`](https://github.com/wearelighthouse/scss/blob/master/.sass-lint.yml) config file will lint both sass and scss within Atom.
+
 #### Brackets
 
 The extension [Brackets Sass Lint](https://github.com/brackets-userland/brackets-sass-lint) with the [`.sass-lint.yml`](https://github.com/wearelighthouse/scss/blob/master/.sass-lint.yml) config file will lint both sass and scss within Brackets.
